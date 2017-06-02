@@ -351,19 +351,18 @@ database that Active Record supports using `rake`. Here's a migration that
 creates a table:
 
 ```ruby
-class CreatePublications < ActiveRecord::Migration[5.0]
+class CreatePublications < ActiveRecord::Migration[5.1]
   def change
     create_table :publications do |t|
       t.string :title
       t.text :description
-      t.references :publication_type
+      t.references :publication_type, foreign_key: true
       t.integer :publisher_id
       t.string :publisher_type
       t.boolean :single_issue
 
       t.timestamps
     end
-    add_index :publications, :publication_type_id
   end
 end
 ```
